@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section>
+	<table width="100%" height="10%" border=0>
+			<h1><center>Welcome to the Application Page</h1>
+			<p style="font-size:10px" align="center">Follow the below boxes to create a working elevator pitch for interested students to read. </p>
+			<p style="font-size: 10px" align="center">NOTE: the quality of content in your application is based on your discretion. However,
+				the more information you provide the stronger you will look as an applicant.</p>
+			
+			<p style="font-size: 10px" align="center">If you have questions you have about elevator pitches or the format below please click <a href="FAQ.html">here</a> to see our frequently asked questions page</p>
+	</table>
+	<frameset>
+		<form action="mailto:something@pitt.edu", method="post"><br>
+			<h2><center>Apply</h2>
+			Resume: <span style="padding-left: 60px"> <input type="text" name="title" id="projectTitle"/><br><br>
+			Cover Letter: <span style="padding-left: 60px"> <input type="text" name="image" id="imageURL"/><br><br>
+		
+			
+			<!-- Qualifications-->			
+			<center>Qualifications <br>
+			<textarea rows="5" cols="100" name="quality" id="quality">Explain why you are interested in this idea and what you can provide.</textarea><br>
+			<br><br><br>	
+			
+			<!-- Describe your availability-->						
+			<center>Availability <br>
+			<textarea rows="5" cols="100" name="qualifications" id="qualifications">Briefly explain your availability during the week and on weekends. </textarea><br>
+			<br><br><br>
+
+			<!-- What do you want from this project-->						
+			<center>Expectations <br> 
+			<textarea rows="5" cols="100" name="work" id="work">State what you expect out of this project in the long run (hourly pay, service hours, etc.).</textarea><br>
+			<br><br><br>
+			
+			<!-- Any other info -->
+			<center>Additional Info <br> 
+			<textarea rows="5" cols="100" name="additionalInfo" id="additionalInfo">If there is any other information you would like to add please do so here </textarea>
+			<br><br><br>
+			
+			<br><br><input type="submit" value="Submit"></align><br>
+		</form>
+	</frameset>
+</section>
+
+{% endblock %}

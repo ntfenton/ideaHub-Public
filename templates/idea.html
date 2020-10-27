@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet" href="/static/CSS/idea.css"></link>
+
+<section>
+	<h1 class="display-4">{{idea.title}}</h1>
+	<div class="row"> 
+		<div class="column idea-content">
+			<img class="idea-image" src="{{idea.image}}">
+			<div class="description">
+				<p>{{idea.description['Conjecture']}}</p>
+				<p>{{idea.description['Quality']}}</p>
+				<p>{{idea.description['Qualifications']}}</p>
+				<p>{{idea.description['Work']}}</p>
+				<p>{{idea.description['Additional Info']}}</p>
+			</div>
+		</div>
+		<div class="column idea-meta">
+			<div class="idea-info">
+				<h4>Owner: {{idea.owner}}</h4>
+				<h5>Posted {{idea.projdate}}</h5>
+			</div>
+			<div>
+				{% for tag in idea.tags %}
+				<h6 class="tag">{{tag}}</h6>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<button class="apply"> <a href="/apply">Apply!</a> </button>
+		<form action="{{url_for('toggleFollow', idea=idea.title)}}" method="POST">
+			<button type="submit" formmethod="post" class="favorite-button">
+				<!-- <img class="favorite" src="/static/images/favorite.png"> -->
+				<!-- <i class="glyphicon glyphicon-heart"></i> -->
+				Follow
+			</button>
+		</form>
+	</div>
+</section>
+{% endblock %}

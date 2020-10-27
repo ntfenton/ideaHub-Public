@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block nav_profile %}active{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="/static/CSS/profile.css"></link>
+<section class= "profile" >
+
+    {% if errors%}
+    <h1 class="display-3" style="color:red">Could not find user: {{searchedUser}}.</h1>
+    <h2 class= "display-4" style="color:red">Please try a different user</h2>
+    {% else %}
+    <h1 class="display-1"> Welcome back, {{user}} </h1>
+    <div> 
+        <div class="sub-heading">
+            <h3>My ideas </h3>
+        </div>
+        <div>
+            {% for idea in ownedIdeas %}
+            <a href="{{url_for('idea', ideaTitle=idea.title)}}">
+                <div class="row my-idea">
+                    <div class="column"> 
+                         <h5 class="idea-title">{{idea.title}}</h5>
+                    </div>
+                    <div class="column row">
+                        {% for j in range(0,3) %}
+                        <h6 class="tag"> {{idea.tags[j]}} </h6>
+                        {% endfor %}
+                    </div>
+                    <div class="column">
+                        <h6 class="idea-info">Posted {{idea.projdate}} | {{idea.owner}}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <a href="/my-ideas"><h6 class="see-all">see all</h6></a>
+
+        <div class="sub-heading" style="margin-top: 15%;">
+            <h3>Followed ideas </h3>
+        </div>
+        <div>
+            {% for idea in followedIdeas %}
+            <a href="{{url_for('idea', ideaTitle=idea.title)}}">
+                <div class="row my-idea">
+                    <div class="column"> 
+                         <h5 class="idea-title">{{idea.title}}</h5>
+                    </div>
+                    <div class="column row">
+                        {% for j in range(0,3) %}
+                        <h6 class="tag"> {{idea.tags[j]}} </h6>
+                        {% endfor %}
+                    </div>
+                    <div class="column">
+                        <h6 class="idea-info">Posted {{idea.projdate}} | {{idea.owner}}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <a href="/followed-ideas"><h6 class="see-all">see all</h6></a>
+
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

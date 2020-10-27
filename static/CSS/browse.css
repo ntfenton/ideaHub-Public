@@ -1,0 +1,18 @@
+.card{
+	max-width: 25%;
+	min-width: 200px;
+}
+.tag {
+	margin-left: 10px;
+	background-color: #ffd200;
+	padding: 5px;
+	border-radius: 10px;
+	color: black;
+}
+a {
+	color: black;
+}
+a:hover {
+	color: blue;
+	text-decoration: none;
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       
+        <!-- Custom stylee -->
+        <link href="/static/CSS/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/static/favicon.ico">
+        <title>ideaHub</title>
+    </head>
+    <body>
+
+        <div class="my-nav">
+            {% if user %}
+            <li class="my-nav-elem">
+                <a href="/profile" class="{% block nav_profile %}{% endblock %}"><img src="/static/images/home.png"><span style="padding-left: 1vw;">Dashboard</span></a>
+            </li>
+             <li class="my-nav-elem">
+                <a href="/createProject" class="{% block nav_newproj %}{% endblock %}"><img src="/static/images/create.png"><span style="padding-left: 1vw;">Pitch an Idea</span></a>
+            </li>
+            <li class="my-nav-elem">
+                <a href="/browse" class="{% block nav_browse %}{% endblock %}"><img src="/static/images/search.png"><span style="padding-left: 1vw;">Browse Ideas</span></a>
+            </li>
+            <li class="my-nav-elem">
+                <a href="/my-ideas" class="{% block nav_owned %}{% endblock %}"><img src="/static/images/transport.png"><span style="padding-left: 1vw;">My Ideas</span></a>
+            </li>
+            <li class="my-nav-elem">
+                <a href="/followed-ideas" class="{% block nav_follow %}{% endblock %}"><img src="/static/images/sparkle.png"><span style="padding-left: 1vw;">Following</span></a>
+            </li>
+            {% else %}
+            <div class="nav-new-user">
+                Not signed in? <a href="/login" style="font-weight: bold; color: white;">Login</a> or <a href="createAccount" style="font-weight: bold; color: white;">Signup</a>
+            </div>
+            {% endif %}
+        </div>
+        <a href="/home"><img src="/static/images/logo.png" class="logo"></a>
+        {% if user %}
+        <div class="dropdown logout">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #f2115b; border-width: 0px;">
+            {{user}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                <a class="dropdown-item" href="/profile">Dashboard</a>
+                <a class="dropdown-item" href="/signout">Logout</a>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="my-content">
+        {% block content %}
+        {% endblock %}
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"> </script>
+    </body>
+</html>

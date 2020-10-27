@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block nav_follow %}active{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="/static/CSS/browse.css"></link>
+<section>
+	<h1>Followed Ideas</h1>
+	<div class="card-deck">
+	{% for idea in ideaList %}
+	    <div class="card" style="margin: 1%;">
+	        <img class="card-img-top" src="{{idea.image}}" alt="Image">
+	        <div class="card-body">
+	            <h5 class="card-title"> <a class="stretched-link" href="{{url_for('idea', ideaTitle=idea.title)}}">{{idea.title}}</a></h5>
+	            <h6>Posted {{idea.projdate}} by {{idea.owner}}</h6>
+	            <div class="row">
+		            {% for j in range(0,3) %}
+		            {% if idea.tags[j] %}
+	                <h6 class="tag"> {{idea.tags[j]}} </h6>
+	                {% endif %}
+	                {% endfor %}
+           		</div>
+	        </div>
+	    </div>
+    {% endfor %}
+
+    </div>
+</section>
+{% endblock %}

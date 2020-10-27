@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+{% block nav_newproj %}active{% endblock %}
+{% block content %}
+<link href="/static/CSS/createProject" rel="stylesheet">
+<section>
+	<div class="explain-pitch">
+		<div style="width: 70%; padding-right: 5%">
+			<h1>Time to Make Your Pitch</h1>
+			<p>Follow the below boxes to create a working elevator pitch for interested students to read. The quality of content in the elevator pitch is based on your discretion.  However, the more detail you place in this elevator pitch the more likely you will be to have applicants interested in your idea.</p>
+		</div>
+		<div style="width: 30%;">
+			<h2>Need help making your pitch? Check out our <a href="/FAQ">frequently asked questions page</a></h2>
+		</div>
+	</div>
+
+	<form action="/doCreateProject", method="POST">
+		<h5>What's the name of your idea?<h5>
+		<input class="my-input" type="text" name="title" id="projectTitle">
+	
+		<h5>Description: Let's walk through a part of stasis theory<h5>
+		<h6>Conjecture: What's the problem at hand?<h6>
+		<textarea rows=5 name="conjecture" id="conjecture" placeholder="Initialize the problem and describe a brief solution"></textarea>
+		
+		<h6>Quality: What are the stakes?</h6>
+		<textarea rows=5 name="quality" id="quality" placeholder="Explain why solving this problem is important and what will happen if we don't implement your idea."></textarea>
+		
+		<h5>Creat a team: What do you expect from candidate team members?<h5>
+		<h6>Qualifications</h6>
+		<textarea rows=5 name="qualifications" id="qualifications" placeholder="Give a brief rundown of what you want you expect students to know before applying."></textarea>
+
+		<h6>Work</h6>
+		<textarea rows=5 name="work" id="work" placeholder="Give a timeline of what they will be doing if they end up joining this group."></textarea>
+		
+		<h5>Additional Info</h5>
+		<textarea rows=5 name="additionalInfo" id="additionalInfo" placeholder="If there is any other information you would like to add please do so here "></textarea>
+		<h6>Paste a URL to an image for your project here:</h6>
+		<input class="my-input" type="text" name="image" id="imageURL">
+
+		<h5>Tags: Check tags for your project to help users find it!</h5>
+		<div class="row">
+			<div class="column">
+				<div>
+					<input type="checkbox" id="Healthcare" name="tags" value="Healthcare">
+					<label for="Healthcare">Healthcare</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Math" name="tags" value="Math">
+					<label for="Math">Math</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Writing" name="tags" value="Writing">
+					<label for="Writing">Writing</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Programming" name="tags" value="Programming">
+					<label for="Programming">Programming</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Microsoft" name="tags" value="Microsoft">
+					<label for="Microsoft">Microsoft</label>
+				</div>
+			</div>
+			<div class="column">
+				<div>
+					<input type="checkbox" id="Physics" name="tags" value="Physics">
+					<label for="Physics">Physics</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Chemistry" name="tags" value="Chemistry">
+					<label for="Chemistry">Chemistry</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Biology" name="tags" value="Biology">
+					<label for="Biology">Biology</label>
+				</div>
+				<div>
+					<input type="checkbox" id="History" name="tags" value="History">
+					<label for="History">History</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Film" name="tags" value="Film">
+					<label for="Film">Film</label>
+				</div>
+			</div>
+			<div class="column">
+				<div>
+					<input type="checkbox" id="Marketing" name="tags" value="Marketing">
+					<label for="Marketing">Marketing</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Ecology" name="tags" value="Ecology">
+					<label for="Ecology">Ecology</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Humanities" name="tags" value="Humanities">
+					<label for="Humanities">Humanities</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Social Science" name="tags" value="Social Science">
+					<label for="Social Science">Social Science</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Non-profit" name="tags" value="Non-profit">
+					<label for="Non-profit">Non-profit</label>
+				</div>
+			</div>
+			<div class="column">
+				<div>
+					<input type="checkbox" id="STEM" name="tags" value="STEM">
+					<label for="STEM">STEM</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Graphic Design" name="tags" value="Graphic Design">
+					<label for="Graphic Design">Graphic Design</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Lab" name="tags" value="Lab">
+					<label for="Lab">Lab</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Remote" name="tags" value="Remote">
+					<label for="Remote">Remote</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Psychology" name="tags" value="Psychology">
+					<label for="Psychology">Psychology</label>
+				</div>
+			</div>
+			<div class="column">
+				<div>
+					<input type="checkbox" id="On-site" name="tags" value="On-site">
+					<label for="On-site">On-site</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Engineering" name="tags" value="Engineering">
+					<label for="Engineering">Engineering</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Public Service" name="tags" value="Public Service">
+					<label for="Public Service">Public Service</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Statistics" name="tags" value="Statistics">
+					<label for="Statistics">Statistics</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Law" name="tags" value="Law">
+					<label for="Law">Law</label>
+				</div>
+			</div>
+		</div>
+
+		<button class="create-button" type="submit">Post your pitch!</button>
+	</form>
+</section>
+
+{% endblock %}

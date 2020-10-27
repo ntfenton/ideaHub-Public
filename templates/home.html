@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	   
+        <!-- Custom stylee -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap" rel="stylesheet">
+	    <link href="/static/CSS/home.css" rel="stylesheet">
+	    <link rel="shortcut icon" href="/static/favicon.ico">
+	    <title>ideaHub</title>
+	</head>
+	<body>
+
+		<!--Navbar at top of page-->
+		<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="{{ url_for('home') }}">
+                	<img src="/static/images/logo.png" class="logo" style="height: 2vw;">
+                	ideaHub
+            	</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        {% if user %}
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger {% block nav_profile %}{% endblock %}"
+                                href="{{ url_for('profile') }}" title = "View your profile">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger login"
+                                href="/signout">Logout</a>
+
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+    						<button tyle="button" class="nav-link login" data-toggle="modal" data-target="#loginModal">Login</button>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+		<!-- Login "Modal" -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content my-modal">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <form action="/dosignin" method="POST">
+					<div class="form-label-group">
+						<label for="username_entry">Username</label>
+						<input type="text" name = "username"id="username_entry" class="form-control" placeholder="Username" required autofocus>
+					</div>
+					<br>
+					<div class="form-label-group">
+						<label for="password_entry">Password</label>
+						<input type="password" name="password" id="password_entry" class="form-control" placeholder="Password" required>
+					</div>
+					<br>
+					<button class="modal-button" type="submit">Sign in!</button>
+					<br>	
+				</form>
+				<button class="modal-button" style="margin-top: 10%; line-height: 2vw;" onclick="location.href='/createAccount'">Don't have an account? <a href="createAccount" style="font-weight: bold; color: white;">Signup</a></button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+        <!--Page banner-->
+		<div class="my-banner">
+				<div class="banner-head-text">welcome to</div>
+				<div class="banner-text">
+					<span style="color: #1e90ff">i</span><span>d</span><span style="color: #f2115b">e</span><span>a</span><span style="color: #ffd200">H</span><span>u</span><span style="color: #1e90ff">b</span>
+				</div>
+				<div class="banner-sub-text"> where brilliant ideas begin</div>
+				<a class="nav-link js-scroll-trigger" href="#mission">
+					<img src="/static/images/down_arrow.png" class="center" style="padding-top: 20px;"> 
+					<p class="arrow-text">Find out more</p>
+				</a>
+		</div>
+
+		<div class="mission" id="mission">
+			<img src="/static/images/home_image_1.png" class="home-image-1"> 
+			<div class="mission-text">
+				<p class="mission-head-text">our</p>
+				<p class="mission-head-text" style="padding-left: 10%">mission</p>
+				<p class="mission-sub-text">Creating a 3 pillar support system for student ideas form day 1.</p>
+			</div>
+		</div>
+
+		<h1>We help students to</h1>
+		<div class="pillars">
+			<div class="row">
+				<div class="column pillar-elem">
+					<img src="/static/images/team.png" class="center">
+					<h2>Create teams</h2>
+				</div>
+				<div class="column pillar-elem">
+					<img src="/static/images/teach.png" class="center">
+					<h2>Find faculty support</h2>
+				</div>
+				<div class="column pillar-elem">
+					<img src="/static/images/follow.png" class="center">
+					<h2>Build a follower network</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="get-started">
+			<div class="get-started-text">
+				<p>get started</p>
+				<div class="row">
+					<button class="call-to-action" onclick="location.href = '/browse'">Explore Projects</button>
+					<button class="call-to-action" onclick="location.href = '/createProject'">Create a Project</button>
+				</div>
+			</div>
+			<img src="/static/images/home_image_2.png" class="home-image-2">
+		</div>
+
+		<div class="contact">
+		 	<div class="row">
+		 		<div class="column contact-elem">
+		 			<p class="contact-elem-header">CONTACT</p>
+		 			<p>hello@ideahub.com</p>
+		 			<p>412-888-8888</p>
+
+		 			<br>
+
+		 			<p class="contact-elem-header">LOCATION</p>
+		 			<p>4200 Fifth Ave</p>
+		 			<p>Pittsburgh, PA</p>
+		 			<p>15260</p>
+		 		</div>
+		 		<div class="column contact-elem">
+		 			<p class="contact-elem-header">NEED HELP?</p>
+		 			<p>check out the <a href="/FAQ">FAQ</a></p>
+		 			<p>or read  <a href="/about">about us</a></p>
+
+		 			<br>
+
+		 			<p class="contact-elem-header">FOLLOW US</p>
+		 			<p>Facebook</p>
+		 			<p>Twitter</p>
+		 			<p>Instagram</p>
+		 		</div>
+		 	</div>
+		</div>
+
+		<!-- bootstrap javascript files -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"> </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block nav_newacc %}active{% endblock %}
+{% block content %}
+
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Welcome!</h2>
+                {% if errors %} 
+                <header>
+                    {% for error in errors %}
+                    <div class="Error">{{error}}</div>
+                    {% endfor %}
+                </header> 
+                {% endif %}
+                <form action="/makeAccount" method="POST">
+                    <div class="form-label-group">
+                        <label for="username_entry">Username</label>
+                        <input type="text" name="username" id="username_entry" class="form-control" placeholder="Username" required
+                            autofocus>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="email_entry">Email Address</label>
+                        <input type="email" name="email" id="email_entry" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="password_entry">Password</label>
+                        <input type="password" name="password" id="password_entry" class="form-control" placeholder="Password" required>
+                    <br>
+                    <div>
+                        <button class="btn btn-lg btn-secondary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                             type="submit">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

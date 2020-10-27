@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block nav_login %}active{% endblock %}
+{% block content %}
+
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Welcome back!</h2>
+        <form action="/dosignin" method="POST">
+          <div class="form-label-group">
+              {{error}}
+              <br>
+            <label for="username_entry">Username</label>
+            <input type="text" name = "username"id="username_entry" class="form-control" placeholder="Username" required autofocus>
+
+          </div>
+
+          <div class="form-label-group">
+            <label for="password_entry">Password</label>
+            <input type="password" name="password" id="password_entry" class="form-control" placeholder="Password" required>
+
+          </div>
+          <br>
+          <div>
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+               type="submit">Login</button>
+               <a href="{{ url_for('createAccount') }}" class="btn btn-lg btn-secondary btn-block btn-login text-uppercase text-white font-weight-bold mb-2">Create an Account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

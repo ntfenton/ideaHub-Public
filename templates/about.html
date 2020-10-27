@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<style>
+		  .bd-placeholder-img {
+		    font-size: 2.125rem;
+		    text-anchor: middle;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		  }
+
+		  @media (min-width: 768px) {
+		    .bd-placeholder-img-lg {
+		      font-size: 3.5rem;
+		    }
+		  }
+		</style>
+		 <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	   
+	    <!-- Custom stylee -->
+	    <link href="/static/CSS/home_copy.css" rel="stylesheet">
+	    <link href="/static/CSS/about_copy.css" rel="stylesheet">
+	    <link rel="shortcut icon" href="/static/favicon.ico">
+	</head>
+	<body role="main">
+		<title>About</title>
+
+		<!--Navbar at top of page-->
+		<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+		    <div class="container">
+		        <a class="navbar-brand js-scroll-trigger" href="{{ url_for('home') }}">
+		        	<img src="/static/images/logo.png" class="logo" style="height: 2vw;">
+		        	ideaHub
+		    	</a>
+
+		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+		            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse" id="navbarResponsive">
+		            <ul class="navbar-nav ml-auto">
+		                {% if user %}
+		                <li class="nav-item">
+		                    <a class="nav-link js-scroll-trigger {% block nav_profile %}{% endblock %}"
+		                        href="{{ url_for('profile') }}" title = "View your profile">Dashboard</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link js-scroll-trigger login"
+		                        href="/signout">Logout</a>
+
+		                </li>
+		                {% else %}
+		                <li class="nav-item">
+							<button tyle="button" class="nav-link login" data-toggle="modal" data-target="#loginModal">Login</button>
+		                </li>
+		                {% endif %}
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+
+		<!-- Login "Modal" -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content my-modal">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <form action="/dosignin" method="POST">
+					<div class="form-label-group">
+						<label for="username_entry">Username</label>
+						<input type="text" name = "username"id="username_entry" class="form-control" placeholder="Username" required autofocus>
+					</div>
+					<br>
+					<div class="form-label-group">
+						<label for="password_entry">Password</label>
+						<input type="password" name="password" id="password_entry" class="form-control" placeholder="Password" required>
+					</div>
+					<br>
+					<button class="modal-button" type="submit">Sign in!</button>
+					<br>	
+				</form>
+				<button class="modal-button" style="margin-top: 10%; line-height: 2vw;" onclick="location.href='/createAccount'">Don't have an account? <a href="createAccount" style="font-weight: bold; color: white;">Signup</a></button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!--Banner-->
+		<div class="my-banner" style="padding:10%;">
+			<div class="banner-head-text">the story of</div>
+			<div class="banner-text">
+				<span style="color: #1e90ff">i</span><span>d</span><span style="color: #f2115b">e</span><span>a</span><span style="color: #ffd200">H</span><span>u</span><span style="color: #1e90ff">b</span>
+			</div>
+		</div>
+
+		
+		<section>
+		<h1 class="about-subtitle">Our Pitch</h1>
+		<TABLE width="100%" height="80%">
+			<TR>
+				<TH class="my-col">
+					<img src="https://nixaca.s3.amazonaws.com/media/uploads/unnamed.png" class="sample-photo">
+				</TH>
+				<TH class="my-col">
+					<h3 class="featurette-heading">Conjecture</h3>
+					<p style="text-align: justify; text-justify: inter-word">From healthcare technology to solutions in diversity, Pitt students are coming up with great ideas to solve everyday problems. The unfortunate thing is not all of these ideas are recognized and fostered. The University of Pittsburgh currently lacks the support infrastructure for connecting students to the teams, tools, and resources they need for their ideas to take root and flourish. We at ideaHub see this not as a problem, but an opportunity--ideaHub presents a way for Pitt students to reach out to like-minded peers across all disciplines to share ideas, projects, and opportunities, while connecting them to faculty mentorship and funding possibilities.</p>
+				</TH>
+			</TR>
+			<TR>
+				<TH class="my-col">
+					<h3 class="featurette-heading">Definition</h3>
+					<p style="text-align: justify; text-justify: inter-word">The University of Pittsburgh uses a similar tool, the Big Idea Center, in orderto connect fellow students on student led projects. However, the Big Idea Center has to major flaws that prevent itfrom being used properly by students. The first problem is that the University does not advertise theBig Idea Center and, as a result, few students know about it. The second problem is that the Big Idea Center interface does not allow for students to properly pitch their project in an engaging and informative way.Our hope is that ideaHub, unlike the Big Idea Center, will be advertised by the University and will allow projects to be properly pitched to a much larger audience of interested students.</p>
+					<p style="text-align: justify; text-justify: inter-word">ideaHub provides students the support structure that they need to successfully develop their ideas:
+						<ul style="text-align: justify; text-justify: inter-word">
+							<li style="text-align: justify; text-justify: inter-word">Creating a team - recruit people who are interested in the same field as the project using tags</li>
+							<li style="text-align: justify; text-justify: inter-word">Finding faculty support - find faculty that do research in the project area</li>
+							<li style="text-align: justify; text-justify: inter-word">Building a follower network - create a mini customer base of individuals who are attracted by the idea and want to engage with the product/service</li>
+						</ul>
+					</p>	
+					<p style="text-align: justify; text-justify: inter-word">ideaHub also brings new focus on the project pitch.  To do this, ideaHub asks for several pieces of information to generate a throughly designed project pitch:</p>
+						<ul style="text-align: justify; text-justify: inter-word">
+							<li style="text-align: justify; text-justify: inter-word">Project title - a catchy product name, or simply a working title to let other students find the project</li>
+							<li style="text-align: justify; text-justify: inter-word">Address stasis theory - what is the purpose? what problems are being addressed?</li>
+							<li style="text-align: justify; text-justify: inter-word">Visualizations - upload images, wireframes, or storyboards to further outline the project idea </li>
+						</ul>
+					</p>
+				</TH>
+				<TH class="my-col">
+					<img src="/static/images/sample_pitch.png" class="sample-photo">
+				</TH>
+			</TR>
+		
+			<TR>  
+				<TH class="my-col">
+					<img src="/static/images/sample_creation.png" class="sample-photo">
+				</TH>
+				<TH class="my-col">		
+					<h3 class="featurette-heading">Quality</h3>
+					<p style="text-align: justify; text-justify: inter-word">We need to solve this problem to prevent good ideas from falling apart before they even get started. ideaHub not only provides a way to pitch ideas, but creates a support network around an idea to prevent great ideas from fizzling out.  ideaHub gives our stakeholders--any student who has an idea--a clear path forward for success. Additionally, the University of Pittsburgh prides itself upon research and projects.  This web app will allow the University to better support student-led projects and yield a higher success rate.</p>
+				</TH>
+			</TR>
+			<TR>
+				<TH class="my-col">
+					<h3 class="featurette-heading">Policy</h3>
+					<p style="text-align: justify; text-justify: inter-word">ideaHub is a free to use tool that enables Pitt students to pitch a project, find student collaborators, obtain faculty support, and create a follower base. ideaHub’s focus on the pitch and walkthrough of stasis theory leads to higher rates of student success than Pitt’s currently existing Big Idea Center. </p>
+					<p style="text-align: justify; text-justify: inter-word">Our intention for ideaHub was to create a website that allows students to pitch their ideas to other students. To approach this problem we focused on the actual project creation side of our website. This allowed us to focus on ensuring that students are able to present engaging and informative projects to other students. 
+					Going forward we plan to focus on the applicant's perspective on the website by:
+						<ul style="text-align: justify; text-justify: inter-word">
+							<li style="text-align: justify; text-justify: inter-word">Allowing students to update their applications after submission.</li>
+							<li style="text-align: justify; text-justify: inter-word">Providing a list of all of the applications that a student has applied for in the past.</li>
+							<li style="text-align: justify; text-justify: inter-word">Allowing students to view the status of their application after submission. </li>
+						</ul>
+					</p>
+					<p style="text-align: justify; text-justify: inter-word">We also plan on making it possible for students to recieve support from outside of the school. This could allow 
+					them to recieve funding for their ideas, gain validation in their intended major field, and even recieve oppurtunities
+					from companies that are interested in their ideas. </p>
+				</TH>
+				<TH class="my-col">
+					<img src="/static/images/sample_ideas.png" class="sample-photo">
+				</TH>
+			</TR>  
+		</TABLE>
+		<h1 class="about-subtitle">collaborators</h1>
+		
+
+		<div class="row">
+			<div class="column collab-content">
+				<!-- <div class="collab-photo" style="background-image: url('/static/iamges/Noah.jpg');">
+				</div> -->
+				<img src="/static/images/Noah.jpg" class="collab-photo">
+				<h2>Noah Fenton</h2>
+				<p>Noah is Computer Science Major at the University of Pittsburgh planning to graduate in Spring 2020. After graduation Noah will attend graduate school at the University of Pittsburgh for Computer Science. Noah organized the website, designing the login page, the list of projects created, and the list of projects followed. He designed schematics for dynamic content in order to make sure that our webiste was updated in real time.</p>
+
+			</div>
+			<div class="column collab-content">
+				<img src="/static/images/Esther.jpg" class="collab-photo">
+				<h2>Esther Lui</h2>
+				<p>Esther is a Professional Writing Major at the University of Pittsburgh planning to graduate in Spring 2021. After graduation Esther is planning on going to graduate school for HR. On this website, Esther designed the website logo, the background of the website, as well as the basic format of the home pages and application pages of the website.</p>
+
+			</div>
+			<div class="column collab-content">
+				<img src="/static/images/Aaron.jpg" class="collab-photo">
+				<h2>Aaron Reuter</h2>
+				<p>Aaron is a Computer Science Major at the University of Pittsburgh planning to graduate in Spring 2023. Aaron is currently on a 5 year plan to recieve a MS in Computer Science. On the team, Aaron created the basic html forms for creating and applying for a project and was involved in the Technical Writing of this website.</p>
+			</div>
+		</div>
+		</section>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<!-- bootstrap javascript files -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"> </script>
+	</body>
+</html>
+
+
+
